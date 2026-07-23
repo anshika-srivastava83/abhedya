@@ -1,0 +1,24 @@
+{
+  "name": "abhedya",
+  "version": "1.0.0",
+  "description": "A secure file vault with encrypted storage, breach-checked passwords, and access control - built as a hands-on cybersecurity learning project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anshika-srivastava83/abhedya.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anshika-srivastava83/abhedya/issues"
+  },
+  "homepage": "https://github.com/anshika-srivastava83/abhedya#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
