@@ -78,3 +78,23 @@ button:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.password-wrapper {
+    position: relative;
+}
+
+.eye-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+}
+
+#usernameAvailability,
+#passwordStrength {
+  font-size: 13px;
+  margin: -6px 0 10px 4px;
+}

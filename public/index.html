@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Abhedya</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Abhedya</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="auth-card">
-    <h1>Abhedya</h1>
+    <div class="auth-card">
+        <h1>Abhedya</h1>
 
-    <form id="signupForm">
-      <input type="text" id="signupUsername" placeholder="Username" required>
-      <input type="password" id="signupPassword" placeholder="Password" required>
-      <button type="submit">Sign Up</button>
-    </form>
+        <form id="signupForm">
+            <input type="text" id="signupUsername" placeholder="Username" required>
+            <p id="usernameAvailability"></p>
+            <div class="password-wrapper">
+                <input type="password" id="signupPassword" placeholder="Password" required>
+                <span id="toggleSignupPw" class="eye-toggle" style="display: none;">👁</span>
+            </div>
+            <p id="passwordStrength"></p>
+            <button type="submit">Sign Up</button>
+        </form>
 
-    <form id="loginForm" style="display:none;">
-        <input type="text" id="loginUsername" placeholder="Username" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <button type="submit">Log In</button>
-    </form>
+        <form id="loginForm" style="display:none;">
+            <input type="text" id="loginUsername" placeholder="Username" required>
+            <div class="password-wrapper">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <span id="toggleLoginPw" class="eye-toggle" style="display: none;">👁</span>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
 
-    <p id="message"></p>
-    <p class="switch-link">
-        <span id="signupPrompt">Already have an account? <a id="showLogin">Log in</a></span>
-        <span id="loginPrompt" style="display:none;">Need an account? <a id="showSignup">Sign up</a></span>
-    </p>
-  </div>
-  <script src="script.js"></script>
+        <p id="message"></p>
+        <p class="switch-link">
+            <span id="signupPrompt">Already have an account? <a id="showLogin">Log in</a></span>
+            <span id="loginPrompt" style="display:none;">Need an account? <a id="showSignup">Sign up</a></span>
+        </p>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>

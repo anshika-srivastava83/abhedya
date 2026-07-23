@@ -36,4 +36,11 @@ router.post("/login", (req, res) => {
   res.json({ message: `Welcome back, ${username}!` });
 });
 
+router.get("/check-username/:username", (req, res) => {
+  const { username } = req.params;
+  const stmt = db.prepare("SELECT id FROM users WHERE username = ?");
+  const user = stmt.get(username);
+  res.json({ available: !user });
+});
+
 module.exports = router;
