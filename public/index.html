@@ -8,12 +8,24 @@
 <body>
   <div class="auth-card">
     <h1>Abhedya</h1>
+
     <form id="signupForm">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
+      <input type="text" id="signupUsername" placeholder="Username" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
       <button type="submit">Sign Up</button>
     </form>
+
+    <form id="loginForm" style="display:none;">
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit">Log In</button>
+    </form>
+
     <p id="message"></p>
+    <p class="switch-link">
+        <span id="signupPrompt">Already have an account? <a id="showLogin">Log in</a></span>
+        <span id="loginPrompt" style="display:none;">Need an account? <a id="showSignup">Sign up</a></span>
+    </p>
   </div>
   <script src="script.js"></script>
 </body>

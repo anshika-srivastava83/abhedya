@@ -19,4 +19,21 @@ router.post("/signup", (req, res) => {
   }
 });
 
+router.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ error: "Username and password are required." });
+  }
+
+  const stmt = db.prepare("SELECT * FROM users WHERE username = ?");
+  const user = stmt.get(username);
+
+  if (!user || user.password !== password) {
+    return res.status(401).json({ error: "Invalid username or password." });
+  }
+
+  res.json({ message: `Welcome back, ${username}!` });
+});
+
 module.exports = router;
