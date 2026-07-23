@@ -84,13 +84,21 @@ button:hover {
 }
 
 .eye-toggle {
+    display: none;
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     user-select: none;
-    font-size: 16px;
+}
+
+.eye-toggle svg {
+    color: #8b7a68;
+}
+
+.eye-toggle:hover svg {
+    color: #4a3f35;
 }
 
 #usernameAvailability,
