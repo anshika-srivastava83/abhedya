@@ -1,0 +1,80 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #faf3e9;
+  color: #4a3f35;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.auth-card {
+  background: #fffaf3;
+  padding: 40px;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 0 8px 24px rgba(150, 120, 90, 0.15);
+  border: 1px solid #f0e4d3;
+}
+
+h1 {
+  text-align: center;
+  color: #b5714a;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #e6d7c3;
+  background: #fffdf9;
+  color: #4a3f35;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #b5714a;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #b5714a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #9c5f3c;
+}
+
+#message {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #7a6a5a;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #8b7a68;
+}
+
+.switch-link a {
+  color: #b5714a;
+  cursor: pointer;
+  text-decoration: underline;
+}
