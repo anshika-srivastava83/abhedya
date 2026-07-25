@@ -93,9 +93,9 @@ signupForm.addEventListener("submit", async (e) => {
   const data = await response.json();
 
   if (response.ok) {
-    message.textContent = "✅ " + data.message + " You can now log in. ";
-    message.style.color = "#4a8b5c";
-  } else {
+    localStorage.setItem("username", username);
+    window.location.href = "vault.heml";
+  }else{
     message.textContent = "❌ Signup was not completed: " + data.error;
     message.style.color = "#c0503a";
   }

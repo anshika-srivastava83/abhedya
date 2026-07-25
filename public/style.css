@@ -11,17 +11,55 @@ body {
   box-sizing: border-box;
 }
 
-.auth-card {
-  background: #fffaf3;
-  padding: 50px 60px;
-  border-radius: 24px;
+.page-wrapper {
+  display: flex;
   width: 100%;
-  max-width: 420px;
+  max-width: 900px;
+  background: #fffaf3;
+  border-radius: 24px;
   box-shadow: 0 8px 24px rgba(150, 120, 90, 0.15);
   border: 1px solid #f0e4d3;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
+.brand-panel {
+  flex: 1;
+  background: #b5714a;
+  color: #fffaf3;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-panel h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.brand-panel p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.auth-card {
+  flex: 1;
+  padding: 60px 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
+  .brand-panel {
+    padding: 40px 30px;
+  }
+}
 h1 {
   text-align: center;
   color: #b5714a;

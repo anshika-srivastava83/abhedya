@@ -8,52 +8,58 @@
 </head>
 
 <body>
-    <div class="auth-card">
-        <h1>Abhedya</h1>
+    <div class="page-wrapper">
+        <div class="brand-panel">
+            <h2>Abhedya</h2>
+            <p>A secure file vault where your files are encrypted before they're ever stored - built as a hands-on
+                project to understand real encryption, authentication, and secure storage.</p>
+        </div>
 
-        <form id="signupForm">
-            <input type="text" id="signupUsername" placeholder="Username" required>
-            <p id="usernameAvailability"></p>
-            <div class="password-wrapper">
-                <input type="password" id="signupPassword" placeholder="Password" required>
-                <span id="toggleSignupPw" class="eye-toggle" style="display: none;">
-                    <svg id="signupEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                            d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
-                        </path>
-                        <line x1="1" y1="1" x2="23" y2="23"></line>
-                    </svg>
-                </span>
-            </div>
-            <p id="passwordStrength"></p>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div class="auth-card">
+            <form id="signupForm">
+                <input type="text" id="signupUsername" placeholder="Username" required>
+                <p id="usernameAvailability"></p>
+                <div class="password-wrapper">
+                    <input type="password" id="signupPassword" placeholder="Password" required>
+                    <span id="toggleSignupPw" class="eye-toggle" style="display: none;">
+                        <svg id="signupEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                            </path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </span>
+                </div>
+                <p id="passwordStrength"></p>
+                <button type="submit">Sign Up</button>
+            </form>
 
-        <form id="loginForm" style="display:none;">
-            <input type="text" id="loginUsername" placeholder="Username" required>
-            <div class="password-wrapper">
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <span id="toggleLoginPw" class="eye-toggle" style="display: none;">
-                    <svg id="loginEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                            d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
-                        </path>
-                        <line x1="1" y1="1" x2="23" y2="23"></line>
-                    </svg>
-                </span>
-            </div>
-            <button type="submit">Log In</button>
-        </form>
+            <form id="loginForm" style="display:none;">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <div class="password-wrapper">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <span id="toggleLoginPw" class="eye-toggle" style="display: none;">
+                        <svg id="loginEyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                            </path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </span>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
 
-        <p id="message"></p>
-        <p class="switch-link">
-            <span id="signupPrompt">Already have an account? <a id="showLogin">Log in</a></span>
-            <span id="loginPrompt" style="display:none;">Need an account? <a id="showSignup">Sign up</a></span>
-        </p>
+            <p id="message"></p>
+            <p class="switch-link">
+                <span id="signupPrompt">Already have an account? <a id="showLogin">Log in</a></span>
+                <span id="loginPrompt" style="display:none;">Need an account? <a id="showSignup">Sign up</a></span>
+            </p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
