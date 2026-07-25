@@ -3,11 +3,11 @@ const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
 document.getElementById("showLogin").addEventListener("click", () => {
-    signupForm.style.display = "none";
-    loginForm.style.display = "block";
-    document.getElementById("signupPrompt").style.display = "none";
-    document.getElementById("loginPrompt").style.display = "inline";
-    message.textContent = "";
+  signupForm.style.display = "none";
+  loginForm.style.display = "block";
+  document.getElementById("signupPrompt").style.display = "none";
+  document.getElementById("loginPrompt").style.display = "inline";
+  message.textContent = "";
 });
 
 document.getElementById("signupPassword").addEventListener("keydown", (e) => {
@@ -43,11 +43,11 @@ document.getElementById("loginPassword").addEventListener("keydown", (e) => {
 });
 
 document.getElementById("showSignup").addEventListener("click", () => {
-    loginForm.style.display = "none";
-    signupForm.style.display = "block";
-    document.getElementById("loginPrompt").style.display = "none";
-    document.getElementById("signupPrompt").style.display = "inline";
-    message.textContent = "";
+  loginForm.style.display = "none";
+  signupForm.style.display = "block";
+  document.getElementById("loginPrompt").style.display = "none";
+  document.getElementById("signupPrompt").style.display = "inline";
+  message.textContent = "";
 });
 
 const eyeOpenPath = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
@@ -80,47 +80,47 @@ setupPasswordToggle("signupPassword", "toggleSignupPw", "signupEyeIcon");
 setupPasswordToggle("loginPassword", "toggleLoginPw", "loginEyeIcon");
 
 signupForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const username = document.getElementById("signupUsername").value;
-    const password = document.getElementById("signupPassword").value;
+  e.preventDefault();
+  const username = document.getElementById("signupUsername").value;
+  const password = document.getElementById("signupPassword").value;
 
-    const response = await fetch("/signup", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({username, password })
-    });
+  const response = await fetch("/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password })
+  });
 
-    const data = await response.json();
-    
-    if (response.ok) {
-      message.textContent = "✅ " + data.message + " You can now log in. ";
-      message.style.color = "#4a8b5c";
-    }else{
-      message.textContent = "❌ Signup was not completed: " + data.error;
-      message.style.color = "#c0503a";
-    }
+  const data = await response.json();
+
+  if (response.ok) {
+    message.textContent = "✅ " + data.message + " You can now log in. ";
+    message.style.color = "#4a8b5c";
+  } else {
+    message.textContent = "❌ Signup was not completed: " + data.error;
+    message.style.color = "#c0503a";
+  }
 });
 
 loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
+  e.preventDefault();
+  const username = document.getElementById("loginUsername").value;
+  const password = document.getElementById("loginPassword").value;
 
-    const response = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
-    });
+  const response = await fetch("/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password })
+  });
 
-    const data = await response.json();
-    
-    if (response.ok){
-      message.textContent = "✅ " + data.message;
-      message.style.color = "#4a8b5c";
-    }else{
-      message.textContent = "❌ " + data.error;
-      message.style.color = "#c0503a";
-    }
+  const data = await response.json();
+
+  if (response.ok) {
+    localStorage.setItem("username", username);
+    window.location.href = "vault.html";
+  } else {
+    message.textContent = "❌ " + data.error;
+    message.style.color = "#c0503a";
+  }
 });
 
 function checkPasswordStrength(password) {

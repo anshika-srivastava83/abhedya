@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abhedya — Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="vault-card">
+    <div class="vault-header">
+      <h1>Your Vault</h1>
+      <p class="vault-subtitle">Welcome back, <span id="vaultUsername"></span></p>
+    </div>
+
+    <form id="uploadForm">
+      <input type="file" id="fileInput" required>
+      <button type="submit">Upload</button>
+    </form>
+    <p id="uploadMessage"></p>
+  </div>
+  <script src="vault.js"></script>
+</body>
+</html>

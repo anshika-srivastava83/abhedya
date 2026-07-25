@@ -20,6 +20,7 @@
   "homepage": "https://github.com/anshika-srivastava83/abhedya#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "multer": "^2.2.0"
   }
 }
