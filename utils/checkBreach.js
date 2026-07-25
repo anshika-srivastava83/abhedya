@@ -35,5 +35,3 @@ function hasWeakPattern(password) {
 }
 
 module.exports = { isCommonPassword, hasWeakPattern };
-
-module.exports = { isCommonPassword };

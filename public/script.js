@@ -10,6 +10,22 @@ document.getElementById("showLogin").addEventListener("click", () => {
     message.textContent = "";
 });
 
+document.getElementById("signupPassword").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const username = document.getElementById("signupUsername").value.trim();
+    const password = document.getElementById("signupPassword").value.trim();
+
+    if (!username || !password) {
+      message.textContent = "❌ Please enter both a username and password before signing up.";
+      message.style.color = "#c0503a";
+      return;
+    }
+
+    signupForm.requestSubmit();
+  }
+});
+
 document.getElementById("showSignup").addEventListener("click", () => {
     loginForm.style.display = "none";
     signupForm.style.display = "block";
