@@ -2,13 +2,18 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database/db");
 const bcrypt = require("bcrypt");
+const { isCommonPassword } = require("../utils/checkBreach");
 
-// NOTE: Password is stored as plain text here on purpose — this gets fixed in Phase 2 with hashing.
+// NOTE: Password is hashed with bcrypt before storage
 router.post("/signup", async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ error: "Username and password are required." });
+  }
+
+  if (isCommonPassword(password)) {
+    return res.status(400).json({ error: "This password is too common and appear in known breach lists. Please choose a different one." });
   }
 
   try {
