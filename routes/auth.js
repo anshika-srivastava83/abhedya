@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database/db");
 const bcrypt = require("bcrypt");
-const { isCommonPassword } = require("../utils/checkBreach");
+const { isCommonPassword, hasWeakPattern } = require("../utils/checkBreach");
 
 // NOTE: Password is hashed with bcrypt before storage
 router.post("/signup", async (req, res) => {
@@ -13,7 +13,11 @@ router.post("/signup", async (req, res) => {
   }
 
   if (isCommonPassword(password)) {
-    return res.status(400).json({ error: "This password is too common and appear in known breach lists. Please choose a different one." });
+    return res.status(400).json({ error: "This password appears in known breach lists. Please choose a different one." });
+  }
+
+  if(hasWeakPattern(password)) {
+    return res.status(400).json({ error: "This password follows a predictable pattern. Please choose something less guessable." })
   }
 
   try {

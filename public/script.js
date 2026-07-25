@@ -59,7 +59,14 @@ signupForm.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
-    message.textContent = data.message || data.error();
+    
+    if (response.ok) {
+      message.textContent = "✅ " + data.message + " You can now log in. ";
+      message.style.color = "#4a8b5c";
+    }else{
+      message.textContent = "❌ Signup was not completed: " + data.error;
+      message.style.color = "#c0503a";
+    }
 });
 
 loginForm.addEventListener("submit", async (e) => {
@@ -74,7 +81,14 @@ loginForm.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
-    message.textContent = data.message || data.error;
+    
+    if (response.ok){
+      message.textContent = "✅ " + data.message;
+      message.style.color = "#4a8b5c";
+    }else{
+      message.textContent = "❌ " + data.error;
+      message.style.color = "#c0503a";
+    }
 });
 
 function checkPasswordStrength(password) {
