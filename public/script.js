@@ -26,6 +26,22 @@ document.getElementById("signupPassword").addEventListener("keydown", (e) => {
   }
 });
 
+document.getElementById("loginPassword").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    if (!username || !password) {
+      message.textContent = "❌ Please enter both a username and password to log in.";
+      message.style.color = "#c0503a";
+      return;
+    }
+
+    loginForm.requestSubmit();
+  }
+});
+
 document.getElementById("showSignup").addEventListener("click", () => {
     loginForm.style.display = "none";
     signupForm.style.display = "block";
