@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Abhedya — Vault</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="vault-card">
-    <div class="vault-header">
-      <h1>Your Vault</h1>
-      <p class="vault-subtitle">Welcome back, <span id="vaultUsername"></span></p>
-    </div>
 
-    <form id="uploadForm">
-      <input type="file" id="fileInput" required>
-      <button type="submit">Upload</button>
-    </form>
-    <p id="uploadMessage"></p>
-  </div>
-  <script src="vault.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Abhedya — Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+</head>
+
+<body>
+    <div class="vault-card">
+        <div class="vault-header">
+            <h1>Your Vault</h1>
+            <p class="vault-subtitle">Welcome back, <span id="vaultUsername"></span></p>
+        </div>
+
+        <form id="uploadForm">
+            <input type="file" id="fileInput" required>
+            <button type="submit">Upload</button>
+        </form>
+        <p id="uploadMessage"></p>
+
+        <div id="fileList" class="file-list"></div>
+    </div>
+    <script src="vault.js"></script>
 </body>
+
 </html>
