@@ -60,6 +60,7 @@ body {
     padding: 40px 30px;
   }
 }
+
 h1 {
   text-align: center;
   color: #b5714a;
@@ -122,25 +123,25 @@ button:hover {
 }
 
 .password-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .eye-toggle {
-    display: none;
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
+  display: none;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
 }
 
 .eye-toggle svg {
-    color: #8b7a68;
+  color: #8b7a68;
 }
 
 .eye-toggle:hover svg {
-    color: #4a3f35;
+  color: #4a3f35;
 }
 
 #usernameAvailability,
@@ -188,41 +189,46 @@ button:hover {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .file-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  gap: 14px;
+  padding: 14px 16px;
   background: #fffdf9;
   border: 1px solid #e6d7c3;
   border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .file-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   background: #f0e4d3;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   color: #b5714a;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .file-info {
-  flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .file-name {
   font-weight: 600;
   font-size: 14px;
   margin: 0;
+  color: #4a3f35;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -231,7 +237,7 @@ button:hover {
 .file-meta {
   font-size: 12px;
   color: #8b7a68;
-  margin: 2px 0 0;
+  margin: 0;
 }
 
 .delete-btn {
@@ -239,8 +245,9 @@ button:hover {
   border: none;
   color: #c0503a;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   padding: 6px;
+  flex-shrink: 0;
 }
 
 .delete-btn:hover {
@@ -261,4 +268,5 @@ button:hover {
 
 .empty-subtext {
   font-size: 13px;
+  margin: 0;
 }
