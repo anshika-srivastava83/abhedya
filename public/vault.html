@@ -6,11 +6,18 @@
     <title>Abhedya — Vault</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+</head>
+
 <body>
     <div class="vault-card">
         <div class="vault-header">
-            <h1>Your Vault</h1>
-            <p class="vault-subtitle">Welcome back, <span id="vaultUsername"></span></p>
+            <div class="vault-header-top">
+                <div>
+                    <h1>Your Vault</h1>
+                    <p class="vault-subtitle">Welcome back, <span id="vaultUsername"></span></p>
+                </div>
+                <button id="logoutBtn" class="logout-btn">Log out</button>
+            </div>
         </div>
 
         <form id="uploadForm">

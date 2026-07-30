@@ -1,5 +1,18 @@
-const username = localStorage.getItem("username") || "friend";
+const username = localStorage.getItem("username");
+
+if (!username) {
+  window.location.href = "index.html";
+}
+
 document.getElementById("vaultUsername").textContent = username;
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  document.body.classList.add("fade-out");
+  setTimeout(() => {
+    localStorage.removeItem("username");
+    window.location.href = "index.html";
+  }, 300);
+});
 
 const iconMap = {
   pdf: "ti-file-text",
