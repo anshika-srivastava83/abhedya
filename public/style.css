@@ -194,9 +194,9 @@ button:hover {
 
 .file-row {
   display: grid;
-  grid-template-columns: 40px 1fr auto;
+  grid-template-columns: 40px 1fr auto auto;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   padding: 14px 16px;
   background: #fffdf9;
   border: 1px solid #e6d7c3;
@@ -269,4 +269,16 @@ button:hover {
 .empty-subtext {
   font-size: 13px;
   margin: 0;
+}
+
+.download-btn {
+  color: #4a8b5c;
+  font-size: 18px;
+  padding: 6px;
+  text-decoration: none;
+  display: flex;
+}
+
+.download-btn:hover {
+  color: #3a7049;
 }
