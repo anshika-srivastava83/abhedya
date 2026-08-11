@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../database/db");
 const bcrypt = require("bcrypt");
 const { isCommonPassword, hasWeakPattern } = require("../utils/checkBreach");
+const { deriveKey, generateSalt } = require("../utils/encryptFile");
 
 // NOTE: Password is hashed with bcrypt before storage
 router.post("/signup", async (req, res) => {
@@ -21,10 +22,13 @@ router.post("/signup", async (req, res) => {
   }
 
   try {
+    const salt = generateSalt();
     const hashedPassword = await bcrypt.hash(password, 10);
     const stmt = db.prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-    stmt.run(username, hashedPassword);
-    res.json({ message: "Signup successful!" });
+    stmt.run(username, hashedPassword, salt);
+
+    const encryptionKey = deriveKey(password, salt).toString("hex");
+    res.json({ message: "Signup successful!", encryptionKey });
   } catch (err) {
     res.status(400).json({ error: "That username is already taken." });
   }
@@ -50,7 +54,9 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ error: "Invalid username or password." });
   }
 
-  res.json({ message: `Welcome back, ${username}!` });
+  const encryptionKey = deriveKey(password, user, salt).toString("hex");
+
+  res.json({ message: `Welcome back, ${username}!`, encryptionKey });
 });
 
 router.get("/check-username/:username", (req, res) => {

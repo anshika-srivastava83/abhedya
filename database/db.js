@@ -12,11 +12,9 @@ db.exec(`
 db.exec(`
   CREATE TABLE IF NOT EXISTS files (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    filename TEXT NOT NULL,
-    original_name TEXT NOT NULL,
-    size INTEGER NOT NULL,
-    uploaded_at TEXT NOT NULL,
-    owner TEXT NOT NULL
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    salt TEXT NOT NULL
   )
 `);
 

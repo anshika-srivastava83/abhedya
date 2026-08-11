@@ -4,20 +4,22 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const db = require("../database/db");
+const { encryptBuffer, decryptBuffer } = require("../utils/encryptFile");
+const { error } = require("console");
 
 const upload = multer({ dest: path.join(__dirname, "../uploads") });
-const { encryptBuffer, decryptBuffer } = require("../utils/encryptFile");
 
 router.post("/upload", upload.single("file"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file was uploaded." });
   }
 
-  const owner = req.body.owner;
-  if (!owner) {
-    return res.status(400).json({ error: "Missing owner information." });
+  const { owner, encryptionKey } = req.body;
+  if (!owner || !encryptionKey) {
+    return res.status(400).json({ error: "Missing owner or encryptionKey" });
   }
 
+  const key = Buffer.from(encryptionKey, "hex");
   const filePath = path.join(__dirname, "../uploads", req.file.filename);
   const rawData = fs.readFileSync(filePath);
   const encryptedData = encryptBuffer(rawData);
@@ -38,6 +40,11 @@ router.get("/files/:owner", (req, res) => {
 });
 
 router.get("/download/:id", (req, res) => {
+  const { key: encryptionKey } = req.query;
+  if(!encryptionKey) {
+    return res.status(400).json({ error: "Missing encryption key." });
+  }
+
   const stmt = db.prepare("SELECT * FROM files WHERE id = ?");
   const file = stmt.get(req.params.id);
 
@@ -45,12 +52,17 @@ router.get("/download/:id", (req, res) => {
     return res.status(404).json({ error: "File not found." });
   }
 
+  const key = Buffer.from(encryptionKey, "hex");
   const filePath = path.join(__dirname, "../uploads", file.filename);
   const encryptedData = fs.readFileSync(filePath);
-  const decryptedData = decryptBuffer(encryptedData);
 
+  try{
+    const decryptedData = decryptBuffer(encryptedData, key);
   res.setHeader("Content-Disposition", `attachment; filename="${file.original_name}"`);
   res.send(decryptedData);
+  }catch (err){
+    res.status(403).json({ error: "Incorrect encryption key - cannot decrypt this file." });
+  }
 });
 
 router.delete("/files/:id", (req, res) => {

@@ -1,6 +1,7 @@
 const username = localStorage.getItem("username");
+const encryptionKey = localStorage.getItem("encryptionKey");
 
-if (!username) {
+if (!username || !encryptionKey) {
   window.location.href = "index.html";
 }
 
@@ -10,6 +11,7 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
   document.body.classList.add("fade-out");
   setTimeout(() => {
     localStorage.removeItem("username");
+    localStorage.removeItem("encryptionKey");
     window.location.href = "index.html";
   }, 300);
 });
@@ -90,6 +92,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   const formData = new FormData();
   formData.append("file", fileInput.files[0]);
   formData.append("owner", username);
+  formData.append("encryptionKey", encryptionKey);
 
   const response = await fetch("/upload", { method: "POST", body: formData });
   const data = await response.json();

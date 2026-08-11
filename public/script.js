@@ -94,6 +94,7 @@ signupForm.addEventListener("submit", async (e) => {
 
   if (response.ok) {
     localStorage.setItem("username", username);
+    localStorage.setItem("encryptionKey", data.encryptionKey);
     window.location.href = "vault.heml";
   }else{
     message.textContent = "❌ Signup was not completed: " + data.error;
@@ -116,6 +117,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   if (response.ok) {
     localStorage.setItem("username", username);
+    localStorage.setItem("encryptionKey", data.encryptionKey);
     window.location.href = "vault.html";
   } else {
     message.textContent = "❌ " + data.error;
