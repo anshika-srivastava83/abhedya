@@ -29,7 +29,8 @@ router.post("/signup", async (req, res) => {
 
     const encryptionKey = deriveKey(password, salt).toString("hex");
     res.json({ message: "Signup successful!", encryptionKey });
-  } catch (err) {
+  } catch (err){
+    //console.log(err);
     res.status(400).json({ error: "That username is already taken." });
   }
 });
@@ -54,7 +55,7 @@ router.post("/login", async (req, res) => {
     return res.status(401).json({ error: "Invalid username or password." });
   }
 
-  const encryptionKey = deriveKey(password, user, salt).toString("hex");
+  const encryptionKey = deriveKey(password, user.salt).toString("hex");
 
   res.json({ message: `Welcome back, ${username}!`, encryptionKey });
 });

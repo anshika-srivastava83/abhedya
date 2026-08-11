@@ -5,11 +5,12 @@ const path = require("path");
 const fs = require("fs");
 const db = require("../database/db");
 const { encryptBuffer, decryptBuffer } = require("../utils/encryptFile");
-const { error } = require("console");
 
 const upload = multer({ dest: path.join(__dirname, "../uploads") });
 
 router.post("/upload", upload.single("file"), (req, res) => {
+  //console.log("Received encryptionKey:", req.body.encryptionKey);
+
   if (!req.file) {
     return res.status(400).json({ error: "No file was uploaded." });
   }
@@ -22,7 +23,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
   const key = Buffer.from(encryptionKey, "hex");
   const filePath = path.join(__dirname, "../uploads", req.file.filename);
   const rawData = fs.readFileSync(filePath);
-  const encryptedData = encryptBuffer(rawData);
+  const encryptedData = encryptBuffer(rawData, key);
   fs.writeFileSync(filePath, encryptedData);
 
   const stmt = db.prepare(

@@ -95,7 +95,7 @@ signupForm.addEventListener("submit", async (e) => {
   if (response.ok) {
     localStorage.setItem("username", username);
     localStorage.setItem("encryptionKey", data.encryptionKey);
-    window.location.href = "vault.heml";
+    window.location.href = "vault.html";
   }else{
     message.textContent = "❌ Signup was not completed: " + data.error;
     message.style.color = "#c0503a";
