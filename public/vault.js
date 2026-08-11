@@ -62,7 +62,7 @@ async function loadFiles() {
         <p class="file-name">${file.original_name}</p>
         <p class="file-meta">${formatSize(file.size)} · uploaded ${formatDate(file.uploaded_at)}</p>
       </div>
-      <a href="/download/${file.id}" class="download-btn"><i class="ti ti-download"></i></a>
+      <a href="/download/${file.id}?key=${encryptionKey}" class="download-btn"><i class="ti ti-download"></i></a>
       <button class="delete-btn" data-id="${file.id}"><i class="ti ti-trash"></i></button>
     </div>
   `).join("");

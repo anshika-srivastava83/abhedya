@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
   try {
     const salt = generateSalt();
     const hashedPassword = await bcrypt.hash(password, 10);
-    const stmt = db.prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+    const stmt = db.prepare("INSERT INTO users (username, password, salt) VALUES (?, ?, ?)");
     stmt.run(username, hashedPassword, salt);
 
     const encryptionKey = deriveKey(password, salt).toString("hex");
